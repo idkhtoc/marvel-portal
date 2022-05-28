@@ -62,7 +62,7 @@ class CharInfo extends Component {
               errorMessage = error ? <ErrorMessage/> : null,
               spinner = loading ? <Spinner/> : null,
               content = !(loading || error || !character) ? <View character={character} /> : null;
-
+        
         return (
             <div className="char__info">
                 {skeleton}
