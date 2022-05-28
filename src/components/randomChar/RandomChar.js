@@ -35,7 +35,6 @@ class RandomChar extends Component {
 
         this.setState({
             loading: true,
-            error: false
         }, () => 
             this.marvelService
                .getCharacter(id)
@@ -100,7 +99,7 @@ const View = ({character}) => {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default RandomChar;
