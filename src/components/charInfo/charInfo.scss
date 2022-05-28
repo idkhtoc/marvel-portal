@@ -25,6 +25,9 @@
             width: 150px;
             height: 150px;
             object-fit: cover;
+            &.un {
+                object-fit: contain;
+            }
         }
     }
     &__btns {

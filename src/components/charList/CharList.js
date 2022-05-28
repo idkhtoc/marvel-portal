@@ -39,12 +39,35 @@ class CharList extends Component {
         this.updateCharacters();
     }
 
+    setCharacters = (characters) => {
+        return ( 
+            <ul className="char__grid">
+                {
+                    characters.map(({id, thumbnail, name}) => 
+                        <li 
+                            className="char__item" 
+                            key={id} 
+                            onClick={() => this.props.onCharSelected(id)}
+                        >
+                            <img 
+                                className={thumbnail.includes('image_not_available') ? 'un' : ''} 
+                                src={thumbnail} 
+                                alt="character"
+                            />
+                            <div className="char__name">{name}</div>
+                        </li>     
+                    )
+                } 
+            </ul>
+        );
+    }
+
     render() {
         const {characters, loading, error} = this.state;
 
         const errorMessage = error ? <ErrorMessage/> : null,
               spinner = loading ? <Spinner/> : null,
-              content = !(loading || error) ? <View characters={characters} /> : null;
+              content = !(loading || error) ? this.setCharacters(characters) : null;
 
         return (
             <div className="char__list">
@@ -57,21 +80,6 @@ class CharList extends Component {
             </div>
         );
     }   
-}
-
-const View = ({characters}) => {
-    return (
-        <ul className="char__grid">
-            {
-                characters.map(({id, thumbnail, name}) => 
-                    <li className="char__item" key={id}>
-                        <img className={thumbnail.includes('image_not_available') ? 'un' : ''} src={thumbnail} alt="character"/>
-                        <div className="char__name">{name}</div>
-                    </li>     
-                )
-            } 
-        </ul>
-    );
 }
 
 export default CharList;
