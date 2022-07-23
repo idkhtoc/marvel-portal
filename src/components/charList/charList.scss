@@ -31,7 +31,8 @@
                 object-fit: contain;
             }
         }
-        &_selected {
+        &:focus {
+            border: none;
             box-shadow: 0 5px 20px $main-color;
             transform: translateY(-8px);
         }
