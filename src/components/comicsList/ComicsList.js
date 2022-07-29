@@ -34,7 +34,7 @@ const ComicsList = props => {
 
         setComics(comics => [...comics, ...newComics]);
         setNewItemsLoading(false);
-        setOffset(offset => offset + 50);
+        setOffset(offset => offset + 8);
         setComicsEnded(ended);
     }
 
