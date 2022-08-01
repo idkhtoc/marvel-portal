@@ -24,7 +24,8 @@ const CharList = props => {
         setNewItemsLoading(initial ? false : true);
 
         getAllCharacters(offset)
-            .then(onCharListLoaded);
+            .then(onCharListLoaded)
+            .catch(error => { throw error.message });
     }
 
     const onCharListLoaded = (newCharacters) => {

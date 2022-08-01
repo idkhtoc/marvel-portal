@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
@@ -24,7 +25,8 @@ const ComicsList = props => {
         setNewItemsLoading(initial ? false : true);
 
         getAllComics(offset)
-            .then(onComicsListLoaded);
+            .then(onComicsListLoaded)
+            .catch(error => { throw error.message });
     }
 
     const onComicsListLoaded = (newComics) => {
@@ -39,17 +41,17 @@ const ComicsList = props => {
     }
 
     const renderItems = comics => {
-        comics = comics.map(({ thumbnail, title, price }, index) => (
+        comics = comics.map(({ id, thumbnail, title, price }, index) => (
             <li
                 className="comics__item"
                 key={index}
                 tabIndex={0}
             >
-                <a href="#">
+                <Link to={`/comics/${id}`}>
                     <img src={thumbnail} alt="comic" className="comics__item-img" />
                     <div className="comics__item-name">{title}</div>
                     <div className="comics__item-price">{price}</div>
-                </a>
+                </Link>
             </li>
         ));
 

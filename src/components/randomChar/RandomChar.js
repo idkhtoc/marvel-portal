@@ -22,7 +22,8 @@ const RandomChar = () => {
         const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
 
         getCharacter(id)
-            .then(setCharacter);
+            .then(setCharacter)
+            .catch(error => { throw error.message });
     }
 
     const errorMessage = error ? <ErrorMessage /> : null,

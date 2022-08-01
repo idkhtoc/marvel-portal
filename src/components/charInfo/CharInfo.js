@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import useMarvelService from '../../services/MarvelService';
 import Spinner from '../spinner/Spinner';
@@ -30,7 +31,7 @@ const CharInfo = ({ charId }) => {
     const skeleton = character || loading || error ? null : <Skeleton />,
         errorMessage = error ? <ErrorMessage /> : null,
         spinner = loading ? <Spinner /> : null,
-        content = !(loading || error || !character) ? <View character={character} /> : null;
+        content = !(loading || error || !character) ? <View {...character} /> : null;
 
     return (
         <div className="char__info">
@@ -42,9 +43,7 @@ const CharInfo = ({ charId }) => {
     );
 }
 
-const View = ({ character }) => {
-    const { name, description, thumbnail, homepage, wiki, comics } = character;
-
+const View = ({ name, description, thumbnail, homepage, wiki, comics }) => {
     return (
         <>
             <div className="char__basics">
@@ -74,7 +73,7 @@ const View = ({ character }) => {
                 {
                     comics.map((item, index) => (
                         <li className="char__comics-item" key={index}>
-                            {item.name}
+                            <Link to={`/comics/${item.resourceURI.match(/[^/]+$/)}`}>{item.name}</Link>
                         </li>
                     ))
                 }
