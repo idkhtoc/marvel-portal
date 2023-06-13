@@ -31,13 +31,31 @@
                 object-fit: contain;
             }
         }
-        &:focus {
-            border: none;
+        &:focus,
+        &_selected {
             box-shadow: 0 5px 20px $main-color;
             transform: translateY(-10px);
         }
         &:hover {
             transform: translateY(-10px);
+        }
+        &-enter {
+            opacity: 0;
+            transform: scale(.7);
+            &-active {
+                opacity: 1;
+                transform: scale(1);
+                transition: all 400ms ease-out;
+            }
+        }
+        &-exit {
+            opacity: 1;
+            transform: scale(1);
+            &-active {
+                opacity: 0;
+                transform: scale(.7);
+                transition: all 400ms ease-out;
+            }
         }
     }
     &__name {

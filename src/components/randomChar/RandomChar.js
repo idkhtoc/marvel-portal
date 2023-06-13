@@ -1,5 +1,5 @@
-
 import { useState, useEffect } from 'react';
+
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import useMarvelService from '../../services/MarvelService';
@@ -57,7 +57,7 @@ const View = ({ character }) => {
         thumbnailClassName = `randomchar__img ${thumbnail.includes('image_not_available') ? 'randomchar__img_un' : null}`;
 
     return (
-        <div className="randomchar__block">
+        <div className='randomchar__block'>
             <img src={thumbnail} alt="Random character" className={thumbnailClassName} />
             <div className="randomchar__info">
                 <p className="randomchar__name">{name}</p>

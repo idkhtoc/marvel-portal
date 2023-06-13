@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
@@ -42,41 +43,49 @@ const CharList = props => {
     const itemRefs = useRef([]);
 
     const focusOnItem = index => {
+        itemRefs.current.forEach(item => item.classList.remove('char__item_selected'));
+        itemRefs.current[index].classList.add('char__item_selected');
+
         itemRefs.current[index].focus();
     }
 
     const renderItems = chars => {
         chars = chars.map(({ id, thumbnail, name }, index) => (
-            <li
-                className="char__item"
+            <CSSTransition
                 key={id}
-                tabIndex={0}
-                ref={el => itemRefs.current[index] = el}
-                onClick={() => {
-                    props.onCharSelected(id);
-                    focusOnItem(index);
-                }}
-                onKeyPress={e => {
-                    if (e.key === ' ' || e.key === 'Enter') {
+                classNames="char__item"
+                timeout={400}
+            >
+                <li
+                    tabIndex={0}
+                    ref={el => itemRefs.current[index] = el}
+                    onClick={() => {
                         props.onCharSelected(id);
                         focusOnItem(index);
-                    }
-                }}
-            >
-                <img
-                    className={thumbnail.includes('image_not_available') ? 'un' : ''}
-                    src={thumbnail}
-                    alt="character"
-                />
-                <div className="char__name">{name}</div>
-            </li>
+                    }}
+                    onKeyPress={e => {
+                        if (e.key === ' ' || e.key === 'Enter') {
+                            props.onCharSelected(id);
+                            focusOnItem(index);
+                        }
+                    }}
+                    className="char__item"
+                >
+                    <img
+                        className={thumbnail.includes('image_not_available') ? 'un' : ''}
+                        src={thumbnail}
+                        alt="character"
+                    />
+                    <div className="char__name">{name}</div>
+                </li>
+            </CSSTransition>
         ));
 
         return (
             <ul className="char__grid">
-                {
-                    chars
-                }
+                <TransitionGroup component={null}>
+                    {chars}
+                </TransitionGroup>
             </ul>
         );
     }
