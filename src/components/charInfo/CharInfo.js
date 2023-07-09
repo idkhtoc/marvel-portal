@@ -73,7 +73,7 @@ const View = ({ name, description, thumbnail, homepage, wiki, comics }) => {
                 {
                     comics.map((item, index) => (
                         <li className="char__comics-item" key={index}>
-                            <Link to={`/comics/${item.resourceURI.match(/[^/]+$/)}`}>{item.name}</Link>
+                            <Link to={`/MarvelPortal/comics/${item.resourceURI.match(/[^/]+$/)}`}>{item.name}</Link>
                         </li>
                     ))
                 }

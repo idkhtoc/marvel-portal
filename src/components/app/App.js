@@ -17,9 +17,9 @@ const App = () => {
         <Suspense fallback={<Spinner />}>
           <main>
             <Routes>
-              <Route path="/comics/:comicId" element={<SingleComicPage />} />
-              <Route path="/comics" element={<ComicsPage />} />
-              <Route path="/" element={<MainPage />} />
+              <Route path="/MarvelPortal/comics/:comicId" element={<SingleComicPage />} />
+              <Route path="/MarvelPortal/comics" element={<ComicsPage />} />
+              <Route path="/MarvelPortal/" element={<MainPage />} />
               <Route path="*" element={<Page404 />} />
             </Routes>
           </main>

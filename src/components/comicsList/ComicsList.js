@@ -52,7 +52,7 @@ const ComicsList = props => {
                     className="comics__item"
                     tabIndex={0}
                 >
-                    <Link to={`/comics/${id}`}>
+                    <Link to={`/MarvelPortal/comics/${id}`}>
                         <img src={thumbnail} alt="comic" className="comics__item-img" />
                         <div className="comics__item-name">{title}</div>
                         <div className="comics__item-price">{price}</div>

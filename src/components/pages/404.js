@@ -26,7 +26,7 @@ const Page404 = () => {
                     fontSize: "1.5rem",
                     marginTop: "30px"
                 }}
-                to="/"
+                to="/MarvelPortal/"
             >
                 Back to main page
             </Link>
