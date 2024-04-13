@@ -1,93 +1,88 @@
 import { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
-import Spinner from '../spinner/Spinner';
-import ErrorMessage from '../errorMessage/ErrorMessage';
+import setListContent from '../../utils/setListContent';
 import useMarvelService from '../../services/MarvelService';
 
 import './comicsList.scss';
 
-const ComicsList = props => {
-    const { loading, error, getAllComics, _baseComicOffset } = useMarvelService();
+const ComicsList = (props) => {
+	const { process, setProcess, getAllComics, _baseComicOffset } =
+		useMarvelService();
 
-    const [comics, setComics] = useState([]);
-    const [newItemsLoading, setNewItemsLoading] = useState(false);
-    const [offset, setOffset] = useState(_baseComicOffset);
-    const [comicsEnded, setComicsEnded] = useState(false);
+	const [comics, setComics] = useState([]);
+	const [newItemsLoading, setNewItemsLoading] = useState(false);
+	const [offset, setOffset] = useState(_baseComicOffset);
+	const [comicsEnded, setComicsEnded] = useState(false);
 
-    useEffect(() => {
-        onRequest(offset, true);
-    }, []);
+	useEffect(() => {
+		onRequest(offset, true);
+	}, []);
 
-    const onRequest = (offset, initial) => {
+	const onRequest = (offset, initial) => {
+		setNewItemsLoading(initial ? false : true);
 
+		getAllComics(offset)
+			.then(onComicsListLoaded)
+			.then(() => setProcess('confirmed'))
+			.catch((error) => {
+				throw error.message;
+			});
+	};
 
-        setNewItemsLoading(initial ? false : true);
+	const onComicsListLoaded = (newComics) => {
+		let ended = false;
 
-        getAllComics(offset)
-            .then(onComicsListLoaded)
-            .catch(error => { throw error.message });
-    }
+		if (newComics.length < 8) ended = true;
 
-    const onComicsListLoaded = (newComics) => {
-        let ended = false;
+		setComics((comics) => [...comics, ...newComics]);
+		setNewItemsLoading(false);
+		setOffset((offset) => offset + 8);
+		setComicsEnded(ended);
+	};
 
-        if (newComics.length < 8) ended = true;
+	const renderItems = (comics) => {
+		comics = comics.map(({ id, thumbnail, title, price }, index) => (
+			<CSSTransition key={index} classNames='comics__item' timeout={400}>
+				<li className='comics__item' tabIndex={0}>
+					<Link to={`/MarvelPortal/comics/${id}`}>
+						<img
+							src={thumbnail}
+							alt='comic'
+							className='comics__item-img'
+						/>
+						<div className='comics__item-name'>{title}</div>
+						<div className='comics__item-price'>{price}</div>
+					</Link>
+				</li>
+			</CSSTransition>
+		));
 
-        setComics(comics => [...comics, ...newComics]);
-        setNewItemsLoading(false);
-        setOffset(offset => offset + 8);
-        setComicsEnded(ended);
-    }
+		return (
+			<ul className='comics__grid'>
+				<TransitionGroup component={null}>{comics}</TransitionGroup>
+			</ul>
+		);
+	};
 
-    const renderItems = comics => {
-        comics = comics.map(({ id, thumbnail, title, price }, index) => (
-            <CSSTransition
-                key={index}
-                classNames="comics__item"
-                timeout={400}
-            >
-                <li
-                    className="comics__item"
-                    tabIndex={0}
-                >
-                    <Link to={`/MarvelPortal/comics/${id}`}>
-                        <img src={thumbnail} alt="comic" className="comics__item-img" />
-                        <div className="comics__item-name">{title}</div>
-                        <div className="comics__item-price">{price}</div>
-                    </Link>
-                </li>
-            </CSSTransition>
-        ));
-
-        return (
-            <ul className="comics__grid">
-                <TransitionGroup component={null}>
-                    {comics}
-                </TransitionGroup>
-            </ul>
-        );
-    }
-
-    const errorMessage = error ? <ErrorMessage /> : null,
-        spinner = loading && !newItemsLoading ? <Spinner /> : null;
-
-    return (
-        <div className="comics__list">
-            {errorMessage}
-            {spinner}
-            {renderItems(comics)}
-            <button
-                className="button button__main button__long"
-                onClick={() => onRequest(offset)}
-                disabled={newItemsLoading}
-                style={{ 'display': comicsEnded ? 'none' : 'block' }}
-            >
-                <div className="inner">load more</div>
-            </button>
-        </div>
-    );
-}
+	return (
+		<div className='comics__list'>
+			{setListContent(
+				process,
+				() => renderItems(comics),
+				newItemsLoading
+			)}
+			<button
+				className='button button__main button__long'
+				onClick={() => onRequest(offset)}
+				disabled={newItemsLoading}
+				style={{ display: comicsEnded ? 'none' : 'block' }}
+			>
+				<div className='inner'>load more</div>
+			</button>
+		</div>
+	);
+};
 
 export default ComicsList;
