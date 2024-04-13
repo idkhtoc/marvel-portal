@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
@@ -66,13 +67,17 @@ const ComicsList = (props) => {
 		);
 	};
 
+	const elements = useMemo(() => {
+		return setListContent(
+			process,
+			() => renderItems(comics),
+			newItemsLoading
+		);
+	}, [process]);
+
 	return (
 		<div className='comics__list'>
-			{setListContent(
-				process,
-				() => renderItems(comics),
-				newItemsLoading
-			)}
+			{elements}
 			<button
 				className='button button__main button__long'
 				onClick={() => onRequest(offset)}

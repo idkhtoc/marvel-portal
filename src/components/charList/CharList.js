@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useEffect, useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
@@ -92,13 +93,17 @@ const CharList = (props) => {
 		);
 	};
 
+	const elements = useMemo(() => {
+		return setListContent(
+			process,
+			() => renderItems(characters),
+			newItemsLoading
+		);
+	}, [process]);
+
 	return (
 		<div className='char__list'>
-			{setListContent(
-				process,
-				() => renderItems(characters),
-				newItemsLoading
-			)}
+			{elements}
 			<button
 				className='button button__main button__long'
 				onClick={() => onRequest(offset)}
