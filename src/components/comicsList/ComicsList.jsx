@@ -45,23 +45,23 @@ const ComicsList = (props) => {
 
 	const renderItems = (comics) => {
 		comics = comics.map(({ id, thumbnail, title, price }, index) => (
-			<CSSTransition key={index} classNames='comics__item' timeout={400}>
-				<li className='comics__item' tabIndex={0}>
-					<Link to={`/MarvelPortal/comics/${id}`}>
+			<CSSTransition key={index} classNames="comics__item" timeout={400}>
+				<li className="comics__item" tabIndex={0}>
+					<Link to={`${id}`}>
 						<img
 							src={thumbnail}
-							alt='comic'
-							className='comics__item-img'
+							alt="comic"
+							className="comics__item-img"
 						/>
-						<div className='comics__item-name'>{title}</div>
-						<div className='comics__item-price'>{price}</div>
+						<div className="comics__item-name">{title}</div>
+						<div className="comics__item-price">{price}</div>
 					</Link>
 				</li>
 			</CSSTransition>
 		));
 
 		return (
-			<ul className='comics__grid'>
+			<ul className="comics__grid">
 				<TransitionGroup component={null}>{comics}</TransitionGroup>
 			</ul>
 		);
@@ -71,20 +71,20 @@ const ComicsList = (props) => {
 		return setListContent(
 			process,
 			() => renderItems(comics),
-			newItemsLoading
+			newItemsLoading,
 		);
 	}, [process]);
 
 	return (
-		<div className='comics__list'>
+		<div className="comics__list">
 			{elements}
 			<button
-				className='button button__main button__long'
+				className="button button__main button__long"
 				onClick={() => onRequest(offset)}
 				disabled={newItemsLoading}
 				style={{ display: comicsEnded ? 'none' : 'block' }}
 			>
-				<div className='inner'>load more</div>
+				<div className="inner">load more</div>
 			</button>
 		</div>
 	);
