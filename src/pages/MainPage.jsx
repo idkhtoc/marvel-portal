@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-import RandomChar from '../components/randomChar/RandomChar';
-import CharInfo from '../components/charInfo/CharInfo';
-import CharList from '../components/charList/CharList';
-import ErrorBoundary from '../components/errorBoundary/ErrorBoundary';
+import RandomChar from '@components/randomChar/RandomChar';
+import CharInfo from '@components/charInfo/CharInfo';
+import CharList from '@components/charList/CharList';
+import ErrorBoundary from '@components/errorBoundary/ErrorBoundary';
 
-import decoration from '../resources/img/vision.png';
+import decoration from '@images/vision.png';
 
 const MainPage = () => {
 	const [selectedChar, setChar] = useState(null);

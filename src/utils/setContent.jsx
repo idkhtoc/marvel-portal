@@ -1,6 +1,6 @@
-import Spinner from '../components/spinner/Spinner';
-import ErrorMessage from '../components/errorMessage/ErrorMessage';
-import Skeleton from '../components/skeleton/Skeleton';
+import Spinner from '@components/spinner/Spinner';
+import ErrorMessage from '@components/errorMessage/ErrorMessage';
+import Skeleton from '@components/skeleton/Skeleton';
 
 const setContent = (process, Component, data) => {
 	switch (process) {

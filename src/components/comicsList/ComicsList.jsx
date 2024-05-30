@@ -3,8 +3,8 @@ import { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
-import setListContent from '../../utils/setListContent';
-import useMarvelService from '../../services/MarvelService';
+import setListContent from '@utils/setListContent';
+import useMarvelService from '@services/MarvelService';
 
 import './comicsList.scss';
 

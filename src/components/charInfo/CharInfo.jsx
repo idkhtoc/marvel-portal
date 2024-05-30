@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import useMarvelService from '../../services/MarvelService';
-import setContent from '../../utils/setContent';
+import useMarvelService from '@services/MarvelService';
+import setContent from '@utils/setContent';
 
 import './charInfo.scss';
 

@@ -8,8 +8,8 @@ import {
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 
-import useMarvelService from '../../services/MarvelService';
-import ErrorMessage from '../errorMessage/ErrorMessage';
+import useMarvelService from '@services/MarvelService';
+import ErrorMessage from '@components/errorMessage/ErrorMessage';
 
 import './charSearchForm.scss';
 

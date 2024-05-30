@@ -1,12 +1,9 @@
-import { useHttp } from '../hooks/http.hook';
+import { useHttp } from '@hooks/http.hook';
+
+import { BASE_OFFSET, BASE_COMIC_OFFSET, API_KEY, API_BASE } from '@constants';
 
 const useMarvelService = () => {
 	const { process, setProcess, request, clearError } = useHttp();
-
-	const _apiBase = 'https://gateway.marvel.com:443/v1/public/';
-	const _apiKey = 'apikey=5feaf92d234eb7f2aa5a014a2bd2e75d';
-	const _baseOffset = 210;
-	const _baseComicOffset = 0;
 
 	const _transformCharacter = (character) => {
 		return {
@@ -39,27 +36,27 @@ const useMarvelService = () => {
 		};
 	};
 
-	const getAllCharacters = async (offset = _baseOffset) => {
+	const getAllCharacters = async (offset = BASE_OFFSET) => {
 		const res = await request(
-			`${_apiBase}characters?limit=9&offset=${offset}&${_apiKey}`
+			`${API_BASE}characters?limit=9&offset=${offset}&${API_KEY}`,
 		);
 		return res.data.results.map(_transformCharacter);
 	};
 
 	const getCharacter = async (id) => {
-		const res = await request(`${_apiBase}characters/${id}?${_apiKey}`);
+		const res = await request(`${API_BASE}characters/${id}?${API_KEY}`);
 		return _transformCharacter(res.data.results[0]);
 	};
 
-	const getAllComics = async (offset = _baseComicOffset) => {
+	const getAllComics = async (offset = BASE_COMIC_OFFSET) => {
 		const res = await request(
-			`${_apiBase}comics?limit=8&offset=${offset}&${_apiKey}`
+			`${API_BASE}comics?limit=8&offset=${offset}&${API_KEY}`,
 		);
 		return res.data.results.map(_transformComic);
 	};
 
 	const getComic = async (id) => {
-		const res = await request(`${_apiBase}comics/${id}?${_apiKey}`);
+		const res = await request(`${API_BASE}comics/${id}?${API_KEY}`);
 		return _transformComic(res.data.results[0]);
 	};
 
@@ -68,8 +65,6 @@ const useMarvelService = () => {
 		setProcess,
 		getAllCharacters,
 		getCharacter,
-		_baseOffset,
-		_baseComicOffset,
 		getComic,
 		clearError,
 		getAllComics,

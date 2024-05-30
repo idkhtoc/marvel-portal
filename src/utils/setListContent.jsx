@@ -1,5 +1,5 @@
-import Spinner from '../components/spinner/Spinner';
-import ErrorMessage from '../components/errorMessage/ErrorMessage';
+import Spinner from '@components/spinner/Spinner';
+import ErrorMessage from '@components/errorMessage/ErrorMessage';
 
 const setListContent = (process, Component, newItemsLoading) => {
 	switch (process) {

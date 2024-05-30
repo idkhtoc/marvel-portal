@@ -1,5 +1,5 @@
 import { useLocation, Link } from 'react-router-dom';
-import ErrorMessage from '../components/errorMessage/ErrorMessage';
+import ErrorMessage from '@components/errorMessage/ErrorMessage';
 
 const Page404 = () => {
 	const location = useLocation();

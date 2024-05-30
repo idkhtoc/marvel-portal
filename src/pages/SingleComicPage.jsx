@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 
-import useMarvelService from '../services/MarvelService';
-import setContent from '../utils/setContent';
+import useMarvelService from '@services/MarvelService';
+import setContent from '@utils/setContent';
 
 import './style/singleComicPage.scss';
 
