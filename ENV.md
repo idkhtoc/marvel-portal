@@ -1,0 +1,2 @@
+VITE_API_BASE="https://gateway.marvel.com:YOUR_PART_OF_URL_HERE"
+VITE_API_KEY="apikey=API_KEY_FOR_MARVEL_API"
