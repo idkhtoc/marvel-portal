@@ -1,9 +1,16 @@
 {
 	"name": "marvel-portal",
 	"private": true,
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"type": "module",
-	"homepage": "https://idkhtoc.github.io/marvel-portal",
+	"author": {
+		"name": "Oleksandr Yanov",
+		"email": "oleksandr.yanov.eu@gmail.com",
+		"url": "https://github.com/idkhtoc"
+	},
+	"description": "Website that provides information about characters and comics from the Marvel universe.",
+	"license": "MIT",
+	"homepage": "https://idkhtoc.github.io/marvel-portal/",
 	"browserslist": {
 		"production": [
 			">0.2%",
