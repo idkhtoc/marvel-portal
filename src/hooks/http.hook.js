@@ -8,7 +8,7 @@ export const useHttp = () => {
 			url,
 			method = 'GET',
 			body = null,
-			headers = { 'Content-Type': 'application/json' },
+			headers = { 'Content-Type': 'application/json' }
 		) => {
 			setProcess('loading');
 
@@ -17,7 +17,7 @@ export const useHttp = () => {
 
 				if (!response.ok) {
 					throw new Error(
-						`Could not fetch ${url}, status: ${response.status}`,
+						`Could not fetch ${url}, status: ${response.status}`
 					);
 				}
 
@@ -29,7 +29,7 @@ export const useHttp = () => {
 				throw e;
 			}
 		},
-		[],
+		[]
 	);
 
 	const clearError = useCallback(() => setProcess('waiting'), []);
