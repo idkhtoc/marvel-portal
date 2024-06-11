@@ -1,5 +1,7 @@
 # [Marvel Portal](https://idkhtoc.github.io/marvel-portal/)
 
+<img src="https://github.com/idkhtoc/marvel-portal/assets/87912703/5bfc45d5-6184-417c-96a3-e540394fe4f6" alt="Marvel Portal" width="75%"/>
+
 ## Overview
 
 The Marvel Portal is an interactive website that provides detailed information about characters and comics from the Marvel universe. 
