@@ -19,7 +19,7 @@ const Page404 = () => {
 				<span style={{ fontStyle: 'italic', color: '#9F0013' }}>
 					{location.pathname}
 				</span>{' '}
-				doesn't exist
+				doesn&apos;t exist
 			</p>
 			<Link
 				style={{

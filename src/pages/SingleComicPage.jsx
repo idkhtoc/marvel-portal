@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import useMarvelService from '@services/MarvelService';
 import setContent from '@utils/setContent';
@@ -48,6 +49,15 @@ const View = ({
 			</Link>
 		</div>
 	);
+};
+
+View.propTypes = {
+	title: PropTypes.string.isRequired,
+	description: PropTypes.string,
+	pageCount: PropTypes.number,
+	thumbnail: PropTypes.string.isRequired,
+	language: PropTypes.string.isRequired,
+	price: PropTypes.number.isRequired,
 };
 
 export default SingleComic;

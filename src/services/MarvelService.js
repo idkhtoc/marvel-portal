@@ -5,6 +5,9 @@ import { BASE_OFFSET, BASE_COMIC_OFFSET, API_KEY, API_BASE } from '@constants';
 const useMarvelService = () => {
 	const { process, setProcess, request, clearError } = useHttp();
 
+	const baseOffset = BASE_OFFSET;
+	const baseComicOffset = BASE_COMIC_OFFSET;
+
 	const _transformCharacter = (character) => {
 		return {
 			id: character.id,
@@ -36,7 +39,7 @@ const useMarvelService = () => {
 		};
 	};
 
-	const getAllCharacters = async (offset = BASE_OFFSET) => {
+	const getAllCharacters = async (offset = baseOffset) => {
 		const res = await request(
 			`${API_BASE}characters?limit=9&offset=${offset}&${API_KEY}`
 		);
@@ -68,6 +71,8 @@ const useMarvelService = () => {
 		getComic,
 		clearError,
 		getAllComics,
+		baseOffset,
+		baseComicOffset,
 	};
 };
 

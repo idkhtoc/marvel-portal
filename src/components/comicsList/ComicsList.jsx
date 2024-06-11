@@ -1,20 +1,20 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import setListContent from '@utils/setListContent';
+
 import useMarvelService from '@services/MarvelService';
 
 import './comicsList.scss';
 
-const ComicsList = (props) => {
-	const { process, setProcess, getAllComics, _baseComicOffset } =
+const ComicsList = () => {
+	const { process, setProcess, getAllComics, baseComicOffset } =
 		useMarvelService();
 
 	const [comics, setComics] = useState([]);
 	const [newItemsLoading, setNewItemsLoading] = useState(false);
-	const [offset, setOffset] = useState(_baseComicOffset);
+	const [offset, setOffset] = useState(baseComicOffset);
 	const [comicsEnded, setComicsEnded] = useState(false);
 
 	useEffect(() => {

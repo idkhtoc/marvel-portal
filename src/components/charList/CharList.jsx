@@ -1,20 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useRef, useMemo } from 'react';
-import PropTypes from 'prop-types';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import PropTypes from 'prop-types';
 
 import setListContent from '@utils/setListContent';
+
 import useMarvelService from '@services/MarvelService';
 
 import './charList.scss';
 
-const CharList = (props) => {
-	const { process, setProcess, getAllCharacters, _baseOffset } =
+const CharList = ({ onCharSelected }) => {
+	const { process, setProcess, getAllCharacters, baseOffset } =
 		useMarvelService();
 
 	const [characters, setCharacters] = useState([]);
 	const [newItemsLoading, setNewItemsLoading] = useState(false);
-	const [offset, setOffset] = useState(_baseOffset);
+	const [offset, setOffset] = useState(baseOffset);
 	const [charEnded, setCharEnded] = useState(false);
 
 	useEffect(() => {
@@ -61,12 +62,12 @@ const CharList = (props) => {
 					tabIndex={0}
 					ref={(el) => (itemRefs.current[index] = el)}
 					onClick={() => {
-						props.onCharSelected(id);
+						onCharSelected(id);
 						focusOnItem(index);
 					}}
 					onKeyDown={(e) => {
 						if (e.key === ' ' || e.key === 'Enter') {
-							props.onCharSelected(id);
+							onCharSelected(id);
 							focusOnItem(index);
 						}
 					}}

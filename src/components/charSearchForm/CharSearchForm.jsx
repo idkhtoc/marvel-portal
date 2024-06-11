@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
 	Formik,
 	Form,
@@ -6,9 +7,9 @@ import {
 	ErrorMessage as FormikErrorMessage,
 } from 'formik';
 import * as Yup from 'yup';
-import { Link } from 'react-router-dom';
 
 import useMarvelService from '@services/MarvelService';
+
 import ErrorMessage from '@components/errorMessage/ErrorMessage';
 
 import './charSearchForm.scss';

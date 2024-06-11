@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import setContent from '@utils/setContent';
 
 import useMarvelService from '@services/MarvelService';
-import setContent from '@utils/setContent';
 
 import './charInfo.scss';
 
@@ -78,6 +79,20 @@ const View = ({ name, description, thumbnail, homepage, wiki, comics }) => {
 
 CharInfo.propTypes = {
 	charId: PropTypes.number,
+};
+
+View.propTypes = {
+	name: PropTypes.string.isRequired,
+	description: PropTypes.string,
+	thumbnail: PropTypes.string.isRequired,
+	homepage: PropTypes.string,
+	wiki: PropTypes.string,
+	comics: PropTypes.arrayOf(
+		PropTypes.shape({
+			name: PropTypes.string.isRequired,
+			resourceURI: PropTypes.string.isRequired,
+		})
+	).isRequired,
 };
 
 export default CharInfo;

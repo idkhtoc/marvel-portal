@@ -16,7 +16,7 @@ const MainPage = () => {
 
 	return (
 		<>
-			<ErrorBoundary a='1'>
+			<ErrorBoundary>
 				<RandomChar />
 			</ErrorBoundary>
 			<div className='char__content'>
