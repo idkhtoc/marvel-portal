@@ -10,8 +10,11 @@ Built using React, React Router, and Vite, the portal fetches data from the Marv
 -   **Browse characters**: Look up their appearence, description, wiki, homepage and comics related to them.
 -   **Browse comics**: Get their price, language and amount of pages.
 -   **Get a random character**
-	- Search -> (coming soon)
-  - Favorites -> (coming soon)
+
+### Coming soon
+
+- **Search**: search characters and comics by id and name.
+- **Favorites**: add characters and comics to favorites.
 
 ## Installation
 
