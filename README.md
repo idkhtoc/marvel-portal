@@ -1,8 +1,34 @@
-# React + Vite
+# [Marvel Portal](https://idkhtoc.github.io/marvel-portal/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+The Marvel Portal is an interactive website that provides detailed information about characters and comics from the Marvel universe. 
+Built using React, React Router, and Vite, the portal fetches data from the Marvel Developer API.
 
--   [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
--   [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+
+-   **Browse characters**: Look up their appearence, description, wiki, homepage and comics related to them.
+-   **Browse comics**: Get their price, language and amount of pages.
+-   **Get a random character**
+	- Search -> (coming soon)
+  - Favorites -> (coming soon)
+
+## Installation
+
+1. Clone the repository: `git clone https://github.com/idkhtoc/marvel-portal.git`
+2. Navigate to the project directory: `cd marvel-portal`
+3. Install dependencies: `npm install`
+4. Set up environmental variables: Create a `.env.local` file and define the following variables: [ENV](ENV.md)
+5. Start: `npm run dev`
+
+## Contributing
+
+Contributions are welcome! If you have any suggestions, bug fixes, or new features to add, please feel free to open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For any inquiries or feedback, please contact me via email: oleksandr.yanov.eu@gmail.com.
