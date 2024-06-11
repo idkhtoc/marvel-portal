@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 
 import AppHeader from '@components/appHeader/AppHeader';
 import Spinner from '@components/spinner/Spinner';
@@ -11,7 +11,7 @@ const SingleComicPage = lazy(() => import('@pages/SingleComicPage'));
 
 const App = () => {
 	return (
-		<Router basename='/marvel-portal'>
+		<Router>
 			<div className='app'>
 				<AppHeader />
 				<Suspense fallback={<Spinner />}>
