@@ -29,30 +29,30 @@ const CharSearchForm = () => {
 	};
 
 	const errorMessage = error ? (
-		<div className="char__search-critical-error">
+		<div className='char__search-critical-error'>
 			<ErrorMessage />
 		</div>
 	) : null;
 	const results = !char ? null : char.length > 0 ? (
-		<div className="char__search-wrapper">
-			<div className="char__search-success">
+		<div className='char__search-wrapper'>
+			<div className='char__search-success'>
 				There is! Visit {char[0].name} page?
 			</div>
 			<Link
 				to={`/characters/${char[0].id}`}
-				className="button button__secondary"
+				className='button button__secondary'
 			>
-				<div className="inner">To page</div>
+				<div className='inner'>To page</div>
 			</Link>
 		</div>
 	) : (
-		<div className="char__search-error">
+		<div className='char__search-error'>
 			The character was not found. Check the name and try again
 		</div>
 	);
 
 	return (
-		<div className="char__search-form">
+		<div className='char__search-form'>
 			<Formik
 				initialValues={{
 					charName: '',
@@ -65,28 +65,28 @@ const CharSearchForm = () => {
 				}}
 			>
 				<Form>
-					<label className="char__search-label" htmlFor="charName">
+					<label className='char__search-label' htmlFor='charName'>
 						Or find a character by name:
 					</label>
-					<div className="char__search-wrapper">
+					<div className='char__search-wrapper'>
 						<Field
-							id="charName"
-							name="charName"
-							type="text"
-							placeholder="Enter name"
+							id='charName'
+							name='charName'
+							type='text'
+							placeholder='Enter name'
 						/>
 						<button
-							type="submit"
-							className="button button__main"
+							type='submit'
+							className='button button__main'
 							disabled={loading}
 						>
-							<div className="inner">find</div>
+							<div className='inner'>find</div>
 						</button>
 					</div>
 					<FormikErrorMessage
-						component="div"
-						className="char__search-error"
-						name="charName"
+						component='div'
+						className='char__search-error'
+						name='charName'
 					/>
 				</Form>
 			</Formik>

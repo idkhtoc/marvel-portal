@@ -16,20 +16,20 @@ const MainPage = () => {
 
 	return (
 		<>
-			<ErrorBoundary a="1">
+			<ErrorBoundary a='1'>
 				<RandomChar />
 			</ErrorBoundary>
-			<div className="char__content">
+			<div className='char__content'>
 				<ErrorBoundary>
 					<CharList onCharSelected={onCharSelected} />
 				</ErrorBoundary>
 				<ErrorBoundary>
-					<div className="char__info-wrapper">
+					<div className='char__info-wrapper'>
 						<CharInfo charId={selectedChar} />
 					</div>
 				</ErrorBoundary>
 			</div>
-			<img className="bg-decoration" src={decoration} alt="vision" />
+			<img className='bg-decoration' src={decoration} alt='vision' />
 		</>
 	);
 };

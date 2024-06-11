@@ -47,7 +47,7 @@ const CharList = (props) => {
 
 	const focusOnItem = (index) => {
 		itemRefs.current.forEach((item) =>
-			item.classList.remove('char__item_selected'),
+			item.classList.remove('char__item_selected')
 		);
 		itemRefs.current[index].classList.add('char__item_selected');
 
@@ -56,7 +56,7 @@ const CharList = (props) => {
 
 	const renderItems = (chars) => {
 		chars = chars.map(({ id, thumbnail, name }, index) => (
-			<CSSTransition key={id} classNames="char__item" timeout={400}>
+			<CSSTransition key={id} classNames='char__item' timeout={400}>
 				<li
 					tabIndex={0}
 					ref={(el) => (itemRefs.current[index] = el)}
@@ -70,7 +70,7 @@ const CharList = (props) => {
 							focusOnItem(index);
 						}
 					}}
-					className="char__item"
+					className='char__item'
 				>
 					<img
 						className={
@@ -79,15 +79,15 @@ const CharList = (props) => {
 								: ''
 						}
 						src={thumbnail}
-						alt="character"
+						alt='character'
 					/>
-					<div className="char__name">{name}</div>
+					<div className='char__name'>{name}</div>
 				</li>
 			</CSSTransition>
 		));
 
 		return (
-			<ul className="char__grid">
+			<ul className='char__grid'>
 				<TransitionGroup component={null}>{chars}</TransitionGroup>
 			</ul>
 		);
@@ -97,20 +97,20 @@ const CharList = (props) => {
 		return setListContent(
 			process,
 			() => renderItems(characters),
-			newItemsLoading,
+			newItemsLoading
 		);
 	}, [process]);
 
 	return (
-		<div className="char__list">
+		<div className='char__list'>
 			{elements}
 			<button
-				className="button button__main button__long"
+				className='button button__main button__long'
 				onClick={() => onRequest(offset)}
 				disabled={newItemsLoading}
 				style={{ display: charEnded ? 'none' : 'block' }}
 			>
-				<div className="inner">load more</div>
+				<div className='inner'>load more</div>
 			</button>
 		</div>
 	);
