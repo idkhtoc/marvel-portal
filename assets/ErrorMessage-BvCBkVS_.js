@@ -1,1 +1,0 @@
-import{j as r}from"./index-r3Kwr9BP.js";const t="/marvel-portal/assets/error-BBH_usxQ.gif",o=()=>r.jsx("img",{src:t,alt:"Error gif",style:{display:"block",width:"250px",height:"250px",objectFit:"contain",margin:"0 auto"}});export{o as E};
