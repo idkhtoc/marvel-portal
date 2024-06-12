@@ -23,7 +23,7 @@ Built using React, React Router, and Vite, the portal fetches data from the Marv
 1. Clone the repository: `git clone https://github.com/idkhtoc/marvel-portal.git`
 2. Navigate to the project directory: `cd marvel-portal`
 3. Install dependencies: `npm install`
-4. Set up environmental variables: Create a `.env.local` file and define the following variables: [ENV](ENV.md)
+4. Set up environmental variables: Create a `.env.local` file and define the following variables: [TEMPLATE](.env.template)
 5. Start: `npm run dev`
 
 ## Contributing
